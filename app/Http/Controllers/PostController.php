@@ -29,7 +29,26 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'body' => 'required|min:10'
+        ]);
+
+        $a = new Post;
+
+        $a->user_id = auth()->user()->id;
+
+        $a->title = $validatedData['title'];
+
+        $a->body = $validatedData['body'];
+
+        $a->time_posted_at = now();
+
+        $a->save();
+
+        session()->flash('message', 'Post was created.');
+
+        return redirect()->route('posts.index');
     }
 
     /**

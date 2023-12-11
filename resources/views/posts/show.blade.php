@@ -5,7 +5,7 @@
 @section('content')
 
     <main>
-
+        <h3>Author: {{$post->user->username}}
         <h1>Title: {{$post->title}}</h1>
         <div>
         <p>Body: {{$post->body}}</p>
