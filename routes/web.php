@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //hello
-Route::get('/users/{user?}', function ($user = null) {
-    return view('usersPage', ['user' =>$user]); //root model binding
-});
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/users', [UserController::class, 'index']);
+
+Route::get('/users/{id}', [UserController::class, 'show']);
+
+ Route::get('/userNames/{user?}', function ($user = null) {
+     return view('usersPage', ['user' =>$user]); //root model binding
+ });
+
+ Route::get('/', function () {
+     return view('welcome');
 });
 
 Route::get('/home', function(){
