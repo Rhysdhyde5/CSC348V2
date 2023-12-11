@@ -16,13 +16,13 @@ use App\Http\Controllers\UserController;
 */
 //hello
 
-Route::get('/users', [UserController::class, 'index']);
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
-Route::get('/users/{id}', [UserController::class, 'show']);
+Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 
- Route::get('/userNames/{user?}', function ($user = null) {
-     return view('usersPage', ['user' =>$user]); //root model binding
- });
+//  Route::get('/userNames/{user?}', function ($user = null) {
+//      return view('usersPage', ['user' =>$user]); //root model binding
+//  });
 
  Route::get('/', function () {
      return view('welcome');

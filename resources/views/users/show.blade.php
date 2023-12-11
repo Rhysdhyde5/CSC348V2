@@ -4,12 +4,28 @@
 
 @section('content')
 
-    <ul>
+    <main>
 
-        <li>Username: {{$user->username}}</li>
+        <h2>Username: {{$user->username}}</h2>
 
-        <li>Email: {{$user->email}}</li>
+        <h2>Email: {{$user->email}}</h2>
 
-    </ul>
+        <h2>Post:</h2>
+        <ul>
+        @foreach ($user->posts as $post)
+        <li> {{ $post->title }} </li>
+        <a href="#">this is link</a>
+        @endforeach
+        </ul>
+
+        <h2>Comments:</h2>
+        <ul>
+        @foreach ($user->comments as $comment)
+        <li> {{ $comment->body }} </li>
+        <a href="#">this is link</a>
+        @endforeach
+        </ul>
+
+    </main>
 
 @endsection
