@@ -2,6 +2,8 @@
 
 @section('title', 'Posts')
 
+<a href="{{ route('posts.create')}}">Create New Post</a>
+
 @section('content')
 
     <p>Newest Posts: </p>
