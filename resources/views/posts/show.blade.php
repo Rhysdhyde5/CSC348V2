@@ -9,6 +9,18 @@
         <h1>Title: {{$post->title}}</h1>
         <div>
         <p>Body: {{$post->body}}</p>
+
+        <form method="POST"
+            action="{{ route('posts.destroy', ['id' => $post->id])}}">
+
+            @csrf
+
+            @method('DELETE')
+
+            <button type="submit">Delete</button>
+
+        </form>
+
         </div>
         <h2>comments:</h2>
 
@@ -50,7 +62,18 @@
         <ul>
         @foreach ($post->comments as $comment)
         <li> {{ $comment->body }} </li>
-        <a href="{{route('users.show', ['id' => $comment->user->id])}}"><h4> Writen by: {{ $comment->user->username }} </h4></a>
+        <a href="{{route('users.show', ['id' => $comment->user->id])}}">
+            <h4> Writen by: {{ $comment->user->username }} </h4></a>
+            <form method="POST"
+            action="{{ route('comments.destroy', ['id' => $comment->id])}}">
+
+            @csrf
+
+            @method('DELETE')
+
+            <button type="submit">Delete</button>
+
+        </form>
         @endforeach
         </ul>
 
