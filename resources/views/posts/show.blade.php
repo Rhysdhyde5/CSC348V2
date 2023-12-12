@@ -10,7 +10,7 @@
         <div>
         <p>Body: {{$post->body}}</p>
 
-    @if (auth()->user()->id === $post->user_id)
+    @if($post->user_id == auth()->id())
 
         <form method="POST"
             action="{{ route('posts.destroy', ['id' => $post->id])}}">
@@ -73,6 +73,8 @@
         <li> {{ $comment->body }} </li>
         <a href="{{route('users.show', ['id' => $comment->user->id])}}">
             <h4> Writen by: {{ $comment->user->username }} </h4></a>
+
+        @if($comment->user_id == auth()->id())
             <a href="{{ route('comments.edit', ['id' => $comment->id])}}"><button type="text">Edit</button></a>
             <form method="POST"
             action="{{ route('comments.destroy', ['id' => $comment->id])}}">
@@ -85,6 +87,7 @@
             <button type="submit">Delete</button>
 
         </form>
+        @endif
         @endforeach
         </ul>
 
