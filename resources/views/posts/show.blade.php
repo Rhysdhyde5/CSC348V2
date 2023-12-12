@@ -14,7 +14,7 @@
         <ul>
         @foreach ($post->comments as $comment)
         <li> {{ $comment->body }} </li>
-        <a href="#">this is link</a>
+        <a href="{{route('users.show', ['id' => $comment->user->id])}}"><h4> Writen by: {{ $comment->user->username }} </h4></a>
         @endforeach
         </ul>
 

@@ -14,15 +14,14 @@
         <ul>
         @foreach ($user->posts as $post)
         <li> {{ $post->title }} </li>
-        <a href="#">this is link</a>
         @endforeach
         </ul>
 
         <h2>Comments:</h2>
         <ul>
         @foreach ($user->comments as $comment)
+        <a href="{{route('posts.show', ['id' => $comment->post->id])}}"><h4> Posted on: {{ $comment->post->title }} </h4></a>
         <li> {{ $comment->body }} </li>
-        <a href="#">this is link</a>
         @endforeach
         </ul>
 
