@@ -66,7 +66,9 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::find($id);
+        $post->fresh();
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -74,7 +76,12 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $post = Post::find($id);
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->update();
+        session()->flash('message', 'Post was updated.');
+        return redirect()->route('posts.show', ['id'=>$post->id]);
     }
 
     /**

@@ -21,6 +21,8 @@
 
         </form>
 
+        <a href="{{ route('posts.edit', ['id' => $post->id])}}"><button type="text">Edit</button></a>
+
         </div>
         <h2>comments:</h2>
 
