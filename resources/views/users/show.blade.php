@@ -10,10 +10,10 @@
 
         <h2>Email: {{$user->email}}</h2>
 
-        <h2>Post:</h2>
+        <h2>This Users Posts:</h2>
         <ul>
         @foreach ($user->posts as $post)
-        <li> {{ $post->title }} </li>
+        <li><a href="{{route('posts.show', ['id' => $post->id])}}"><h4> {{ $post->title }} </h4></a></li>
         @endforeach
         </ul>
 
