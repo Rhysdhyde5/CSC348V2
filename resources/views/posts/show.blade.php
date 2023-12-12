@@ -66,8 +66,10 @@
         <li> {{ $comment->body }} </li>
         <a href="{{route('users.show', ['id' => $comment->user->id])}}">
             <h4> Writen by: {{ $comment->user->username }} </h4></a>
+            <a href="{{ route('comments.edit', ['id' => $comment->id])}}"><button type="text">Edit</button></a>
             <form method="POST"
             action="{{ route('comments.destroy', ['id' => $comment->id])}}">
+
 
             @csrf
 

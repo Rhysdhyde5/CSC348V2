@@ -60,7 +60,9 @@ class CommentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $comment = Comment::find($id);
+        $comment->fresh();
+        return view('comment.edit', compact('comment'));
     }
 
     /**
@@ -68,7 +70,11 @@ class CommentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $comment = Comment::find($id);
+        $comment->body = $request->input('body');
+        $comment->update();
+        session()->flash('message', 'Comment was updated.');
+        return redirect()->route('posts.show', ['id'=>$comment->post->id]);
     }
 
     /**

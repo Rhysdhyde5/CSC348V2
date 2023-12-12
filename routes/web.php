@@ -40,19 +40,19 @@ Route::get('/comments/create', [CommentController::class, 'create'])->name('comm
 
 Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 
+Route::get('/comments/edit/{id}', [CommentController::class, 'edit'])->name('comments.edit');
+
+Route::put('/comments/update/{id}', [CommentController::class, 'update'])->name('comments.update');
+
 Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 //  Route::get('/userNames/{user?}', function ($user = null) {
 //      return view('usersPage', ['user' =>$user]); //root model binding
 //  });
 
- Route::get('/', function () {
-     return view('welcome');
-});
-
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('mainIndex');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
