@@ -10,6 +10,8 @@
         <div>
         <p>Body: {{$post->body}}</p>
 
+    @if (auth()->user()->id === $post->user_id)
+
         <form method="POST"
             action="{{ route('posts.destroy', ['id' => $post->id])}}">
 
@@ -24,6 +26,11 @@
         <a href="{{ route('posts.edit', ['id' => $post->id])}}"><button type="text">Edit</button></a>
 
         </div>
+
+
+        @endif
+
+
         <h2>comments:</h2>
 
         <div>
