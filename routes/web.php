@@ -42,12 +42,8 @@ Route::post('/comments', [CommentController::class, 'store'])->name('comments.st
      return view('welcome');
 });
 
-Route::get('/home', function(){
-    return "nobody Home";
-});
-
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('mainIndex');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
