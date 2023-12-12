@@ -1,5 +1,5 @@
 <header>
-    <h1>GymGo</h1>
+    <a href="/"><h1>GymGo</h1></a>
     @auth
 
     @else
