@@ -2,10 +2,12 @@
 
 @section('title', 'Posts')
 
-<a href="{{ route('posts.create')}}">Create New Post</a>
+
 
 @section('content')
-
+    <a href="{{ route('posts.create')}}"><button>Create New Post</button></a>
+    <br>
+    <br>
     <p>Newest Posts: </p>
     <ul>
 
