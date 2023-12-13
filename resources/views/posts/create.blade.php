@@ -4,27 +4,31 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('posts.store') }}">
+    <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data" style="margin: 20px;">
 
         @csrf
 
-        <p>Title: <input type="text" name="title"
-            value="{{ old('title') }}"></p>
+        <label for="image">Image:</label>
+        <input type="file" name="image" style="margin-bottom: 10px;">
+        <br>
 
+        <label for="title">Title:</label>
+        <input type="text" name="title" value="{{ old('title') }}" style="width: 100%; padding: 8px; margin-bottom: 10px;">
 
+        <label for="body">Body:</label>
+        <textarea name="body" style="width: 100%; height: 150px; padding: 8px; margin-bottom: 10px;">{{ old('body') }}</textarea>
 
-        <p>Body: <textarea type="text" name="body"
-            value="{{ old('body') }}"></textarea></p>
+        <button type="submit" style="background-color: #5cb85c; color: #fff; padding: 8px 12px; border: none; border-radius: 4px;">Submit</button>
 
-        <input type="submit" value="Submit" />
-
-        <a href="{{ route('posts.index' )}}">Cancel</a>
+        <a href="{{ route('posts.index') }}" style="text-decoration: none;">
+            <button type="button" style="background-color: #ccc; color: #333; padding: 8px 12px; border: none; border-radius: 4px;">Cancel</button>
+        </a>
 
     </form>
 
     @if ($errors->any())
 
-        <div>
+        <div style="color: #a94442; background-color: #f2dede; padding: 8px; border-radius: 4px; margin: 20px;">
 
             Errors:
 
@@ -32,7 +36,7 @@
 
                 @foreach ($errors->all() as $error)
 
-                    <li>{{ $error }} </li>
+                    <li>{{ $error }}</li>
 
                 @endforeach
 
@@ -40,8 +44,6 @@
 
         </div>
 
-        @endif
-
-
+    @endif
 
 @endsection
